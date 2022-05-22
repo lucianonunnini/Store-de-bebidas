@@ -33,7 +33,8 @@ while (opciones) {
     case "5":
       aplicar_descuento();
     case "6":
-      alert("Gracias por su tiempo");
+        alert("Gracias por su tiempo");
+        opciones = false
       break;
     case null:
       alert("Gracias por su tiempo");
