@@ -7,4 +7,10 @@ class Bebida {
     }
     
 
+
+    mostrar_descripcion() {
+    
+        return (this.id + " - " + this.marca + " - " + this.tipo + " - "+ this.contenido)
+}
+
 }

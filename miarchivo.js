@@ -127,3 +127,14 @@ function eliminar_bebida() {
 
 }
 
+//creo una funcion para mostrar arreglo con metodos
+
+function mostrar_arreglo() { 
+    let msj = "Las bebidas en stock son"
+    arreglo_bebida.forEach((bebida) => {
+        mensaje = mensaje "\n" + 
+
+    }
+
+
+}
