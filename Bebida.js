@@ -1,9 +1,13 @@
+//defino clase Bebida y su constructor
+
 class Bebida {
 
-    constructor(marca, tipo, contenido) {
-        this.marca = (marca)
-        this.tipo = (tipo)
-        this.precio =(precio)
+
+        constructor(marca,tipo,precio){
+        this.marca = marca
+        this.tipo = tipo
+        this.precio = precio
+        this.id = -1
     }
     
 
@@ -13,4 +17,11 @@ class Bebida {
         return (this.id + " - " + this.marca + " - " + this.tipo + " - "+ this.precio)
 }
 
+    
+    //obtencion de un nuevo id
+
+    set_id(nuevo_id) {
+        
+        this.id = nuevo_id
+    }
 }
