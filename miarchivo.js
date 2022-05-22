@@ -2,7 +2,7 @@
 const bienvenida = saludo
 alert("Bienvenido al nuevo store de bebidas")
 
-let opciones = true 
+let opciones = true //aqui entra al algoritmo
 
 //el usuario debe elegir una opcion 
 while (opciones) {
@@ -60,8 +60,9 @@ console.log(bebida.lenght)
 
 function agregar_bebida (){
 
+    let beb = pedir_datos()    
     if (beb) { 
-    let beb = pedir_datos()
+    
     beb.set_id(nuev_id)
     nuev_id++
     agrego_bebida.push(beb)
@@ -70,6 +71,47 @@ function agregar_bebida (){
 
 }
 
+//Defino una funcion para solicitar datos de bebida que el usuario deba ingresar (funcion de otra funcion)
+
+function pedir_datos() {
+    let control = true 
+    while (control) {
+        let mensaje = ""
+        let marca = prompt("Debe ingresar la marca de la bebida")
+        let tipo = prompt("Debe agregar el tipo de bebida")
+        let contenido = prompt("¿Que cantidad desea ingresar?")
+        
+        if (!marca) {
+
+            mensaje = mensaje + "Debe ingresar la marca de la bebida"
+            
+        }
+
+        if (!tipo) {
+            mensaje = mensaje + "Debes agregar el tipo de bebida"
+            
+        }
+
+        if (!contenido) {
+            mensaje = mensaje + "Debes ingresar la cantidad"
+        }
+
+        if (!isNaN(cantidad)) { 
+        mensaje = mensaje + "Debes ingresar un valor numerico"
+        }
+
+        if (!"") {
+            
+            alert(mensaje)
+            control = confirm("Desea seguir cargando nuevamente?")
+            
+        } else {
+            return new Bebida(marca, tipo, contenido)
+    }
+    }
+
+    return false
+}
 
 //eliminacion del producto de bebida mediante la lista de arrays
 function eliminar_bebida() {
