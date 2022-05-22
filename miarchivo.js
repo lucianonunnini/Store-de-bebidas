@@ -5,10 +5,10 @@ let gen_id = 1
 //saludo
 alert("Bienvenido al nuevo store de bebidas");
 
-let opciones = true; //aqui entra al algoritmo
+let flag = true; //aqui entra al algoritmo
 
 //el usuario debe elegir una opcion
-while (opciones) {
+while (flag) {
   let opciones = prompt(`Por favor elija una opcion para continuar
     1. Agregar un producto
     2. Eliminar uno o varios productos
@@ -33,9 +33,9 @@ while (opciones) {
     case "5":
       aplicar_descuento();
     case "6":
-        alert("Gracias por su tiempo");
+        alert("Gracias por su tiempo")
         opciones = false
-      break;
+      break
     case null:
       alert("Gracias por su tiempo");
       opciones = false;
