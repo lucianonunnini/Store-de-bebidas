@@ -43,6 +43,9 @@ while (opciones) {
 }
 }
 
+//declaro array para su almacenamiento cuando el usuario agregue bebidas
+let arreglo_bebida = new Array ()
+
 //defino array de bebidas
 
 const bebida = ["Cocacola", "Fernet", "Licores", "Vinos", "Cervezas", "Soda"]
@@ -65,7 +68,7 @@ function agregar_bebida (){
     
     beb.set_id(nuev_id)
     nuev_id++
-    agrego_bebida.push(beb)
+    arreglo_bebida.push(beb)
     alert("sumaste una nueva bebida! sigue así")
 }
 
