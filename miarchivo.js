@@ -1,3 +1,7 @@
+//preentrega del proyecto final parte 1
+
+//STORE DE BEBIDAS
+
 //declaro array para su almacenamiento cuando el usuario agregue bebidas
 let arreglo_bebida = new Array();
 
@@ -5,17 +9,16 @@ let gen_id = 1
 //saludo
 alert("Bienvenido al nuevo store de bebidas");
 
-let flag = true; //aqui entra al algoritmo
+let flag = true //aqui entra al algoritmo
 
 //el usuario debe elegir una opcion
 while (flag) {
-  let opciones = prompt(`Por favor elija una opcion para continuar
+  let opciones = prompt(`Por favor, elija una opcion para continuar
     1. Agregar un producto
     2. Eliminar uno o varios productos
     3. Ver el stock de bebidas
-    4. Aplicar cuotas
-    5. Aplicar descuento
-    6. Salir`);
+    4. Aplicar descuento
+    5. Salir`);
 
     switch (opciones) {
     case "1":
@@ -25,20 +28,17 @@ while (flag) {
       eliminar_bebida();
       break;
     case "3":
-      muestro_arreglo();
+      muestro_bebidas();
       break;
     case "4":
-      cantidadCuota();
-      break;
-    case "5":
       aplicar_descuento();
-    case "6":
+    case "5":
         alert("Gracias por su tiempo")
-        opciones = false
+        flag = false
       break
     case null:
       alert("Gracias por su tiempo");
-      opciones = false;
+      flag = false;
       break;
     default:
       alert("La opción ingresada es inválida");
@@ -91,13 +91,13 @@ function agregar_bebida() {
     bebida.set_id(gen_id)
     gen_id++
     arreglo_bebida.push(bebida)
-    alert("sumaste una nueva bebida! sigue así")
+    alert("Sumaste una nueva bebida! sigue así")
   }
 }
 
 //creo una funcion para eliminar bebidas
 function eliminar_bebida() {
-  if (hay_bebidas()) {
+  if (existen_bebidas()) {
     muestro_arreglo();
 
     let id_ingresado = prompt(" Ingrese el codigo id de bebida a eliminar  ").trim();
@@ -124,40 +124,50 @@ function eliminar_bebida() {
   }
 }
 
-/*
+function muestro_bebidas() {
 
-//defino array de bebidas
+//defino orden de precios de las bebidas para mostrar el stock de bebidas se aplica metodo sort
+  if (existen_bebidas()) {
+    let resp = prompt("Las bebidas se mostraran ordenada de acuerdo al precio \n Ingrese A (ascendente) o (D) descendente").toUpperCase()
+    if (resp == "A") {
+      arreglo_bebida.sort((a, b) => {
+      
+        if (a.precio > b.precio) {
 
-const bebida = ["Cocacola", "Fernet", "Licores", "Vinos", "Cervezas", "Soda"];
+          return 1
+        }
+      
+        if (a.precio < b.precio) {
+          return -1
+        }
+        return 0 
+      })
+    } 
 
-//defino funcion flecha para saber cuales son las bebidas disponibles
-(bebidasDisponibles) => console.log("Las bebidas disponibles son: " + bebida);
+    if (resp == "D") {
+      
+      arreglo_bebida.sort((a, b) => {
+        if (a.precio > b.precio) {
+          return -1
 
-//agrego bebida para abastecimiento del producto
+        }
+        if (a.precio < b.precio) {
+        return 1
+        }
+        return 0
+      })
+    }
+        muestro_arreglo()
+  }
 
-bebida.push("sidra");
-alert("la nueva lista de bebidas disponible es " + bebida);
-console.log(bebida.lenght);
-
-
-
-//eliminacion del producto de bebida mediante la lista de arrays
-function eliminar_bebida() {
-  console.log(bebida);
-  let indice = prompt("Ingrese la posicion de las bebidas a eliminar: ");
-  let cantidad = prompt("Ingrese la cantidad de bebidas a eliminar");
-  productos.splice(indice, cantidad);
-  console.log(bebidas);
 }
-
-*/
 
 
 //creo una funcion para mostrar arreglo con metodos
 //agrego metodo de array forEach que recorre el array para luego mostrarlo
 
 function muestro_arreglo() {
-  let msj = "Las bebidas en stock son";
+  let mensaje = "Las bebidas en stock son";
 
   arreglo_bebida.forEach((bebida) => {
     mensaje = mensaje + "\n" + bebida.mostrar_descripcion();
@@ -166,63 +176,13 @@ function muestro_arreglo() {
   alert(mensaje);
 }
 
-//creo funcion para cuotas
-//Defino variables precio y cuotas
-
-preciototal = 0;
-
-//mensaje para el ingreso del precio
-while (true) {
-  let precio = Number(prompt("ingrese el precio del producto"));
-  if (!isNaN(precio) && precio != "" && precio != null) {
-    alert("el precio del producto es: " + precio);
-    break;
-  } else {
-    alert("Por favor, debes ingresar un numero");
-  }
-  continue;
-}
-
-//Creo funcion cantidad de cuotas a elegir
-
-function cantidadCuota() {
-  let numero = Number(
-    prompt(`Elija la cantidad de cuotas 
-    1. una cuota
-    2. tres cuotas
-    3. seis cuotas
-    4. doce cuotas`)
-  );
-  return numero;
-}
-let cuota = cantidadCuota();
-calculo(cuota);
-
-//Defino funcion de precios y cuotas con if para calculo del precio total
-
-function calculo(numero) {
-  if (numero == 1) {
-    preciototal = precio * (1 + 0.05);
-  } else if (numero == 2) {
-    preciototal = precio * (1 + 0.15);
-  } else if (numero == 3) {
-    preciototal = precio * (1 + 0.3);
-  } else if (numero == 4) {
-    preciototal = precio * (1 + 0.6);
-  } else {
-    alert("Opcion no valida, vuelve a empezar");
-  }
-
-  alert("el precio total a pagar en cuotas es de : " + preciototal);
-
-  return preciototal;
-}
 
 //creo funcion para  saber si hay o no bebidas
 
-function hay_bebidas() {
+function existen_bebidas() {
+
   if (arreglo_bebida.lenght == 0) {
-    alert("No hay bebidas disponibles en este momento");
+    alert("No hay bebidas disponibles en stock en este momento");
 
     return false;
   }
@@ -232,7 +192,8 @@ function hay_bebidas() {
 
 //creo funcion para aplicar descuento
 function aplicar_descuento() {
-  if (hay_bebidas()) {
+
+  if (existen_bebidas()) {
     let descuento = Number(prompt("Ingrese un descuento"));
 
     if (!isNaN(descuento)) {
@@ -240,22 +201,22 @@ function aplicar_descuento() {
 
       let arreglo_bebida_descuento = arreglo_bebida.map((bebida) => {
         return {
-          marca: bebida.nombre,
+          marca: bebida.marca,
           tipo: bebida.tipo,
-          precio: bebida.precio * (1 - desc),
-        };
-      });
+          precio: bebida.precio * (1 - desc)
+        }
+      })
 
-      alert(" a las bebidas se le aplicó un descuento de " + descuento + "%");
+      alert("Felicidades! se aplicó un descuento de " + descuento + "%");
 
-      let mensaje = "Las bebidas con descuento aplicado son: \n";
+      let mensaje = "Las bebidas con el descuento aplicado son: \n";
       arreglo_bebida_descuento.forEach((bebida) => {
         mensaje =
           mensaje +
-          "marca" +
+          "marca " +
           bebida.marca +
           " - " +
-          "tipo" +
+          "tipo " +
           bebida.tipo +
           " - " +
           bebida.precio +
