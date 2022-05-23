@@ -177,17 +177,16 @@ function muestro_arreglo() {
 }
 
 
-//creo funcion para  saber si hay o no bebidas
+//creo funcion para saber si hay o no bebidas
 
 function existen_bebidas() {
-
-  if (arreglo_bebida.lenght == 0) {
-    alert("No hay bebidas disponibles en stock en este momento");
-
-    return false;
+  
+  if (arreglo_bebida.length == 0) {
+    alert("No hay bebidas disponibles en stock")
+    return false
   }
+  return true
 
-  return true;
 }
 
 //creo funcion para aplicar descuento
